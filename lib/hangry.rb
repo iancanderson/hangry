@@ -1,5 +1,6 @@
 require "hangry/version"
 require 'active_support/core_ext/object/blank'
+require 'date'
 require "nokogiri"
 
 module Hangry
