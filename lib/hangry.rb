@@ -83,13 +83,16 @@ module Hangry
       end
     end
     def parse_cook_time
-      node_with_itemprop(:cookTime)['content']
+      parse_time(:cookTime)
     end
     def parse_description
       node_with_itemprop(:description).content
     end
     def parse_ingredients
-      nodes_with_itemprop(:ingredients).map(&:content)
+      nodes_with_itemprop(:ingredients).map(&:content).map do |ingredient|
+        # remove newlines and excess whitespace from ingredients
+        ingredient.strip.gsub(/\s+/, ' ')
+      end
     end
     def parse_instructions
       node_with_itemprop(:recipeInstructions).content.strip
@@ -98,14 +101,22 @@ module Hangry
       node_with_itemprop(:name).content
     end
     def parse_prep_time
-      node_with_itemprop(:prepTime)['content']
+      parse_time(:prepTime)
     end
     def parse_published_date
       content = node_with_itemprop(:datePublished)['content']
       content.blank? ? nil : Date.parse(content)
     end
+    def parse_time(type)
+      node = node_with_itemprop(type)
+      if node['content'].present?
+        node['content']  # foodnetwork.com
+      else
+        node['datetime'] # allrecipes.com
+      end
+    end
     def parse_total_time
-      node_with_itemprop(:totalTime)['content']
+      parse_time(:totalTime)
     end
     def parse_yield
       node_with_itemprop(:recipeYield).content
