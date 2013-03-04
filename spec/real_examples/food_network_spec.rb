@@ -3,7 +3,7 @@ require 'hangry'
 describe Hangry do
 
   context "food network recipe" do
-    subject { Hangry.parse(File.read("/Users/ian/Code/rubygems/hangry/spec/fixtures/food_network_schema_org.html")) }
+    subject { Hangry.parse(File.read("spec/fixtures/food_network_schema_org.html")) }
     
     its(:cook_time) { should == "PT0H20M" }
     its(:description) { should == nil }
