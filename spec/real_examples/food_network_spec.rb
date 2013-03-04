@@ -1,4 +1,4 @@
-require '/Users/ian/Code/rubygems/hangry/lib/hangry.rb'
+require 'hangry'
 
 describe Hangry do
 
