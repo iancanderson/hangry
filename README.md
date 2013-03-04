@@ -26,7 +26,7 @@ Or install it yourself as:
 
 ```ruby
 require 'open-uri'
-recipe_html_string = open("http://www.foodnetwork.com/recipes/rachael-ray/spinach-and-mushroom-stuffed-chicken-breasts-recipe/index.html")
+recipe_html_string = open("http://www.foodnetwork.com/recipes/rachael-ray/spinach-and-mushroom-stuffed-chicken-breasts-recipe/index.html").read
 recipe = Hangry.parse(recipe_html_string)
 recipe.name   # "Spinach and Mushroom Stuffed Chicken Breasts"
 recipe.yield  # "4 servings"
