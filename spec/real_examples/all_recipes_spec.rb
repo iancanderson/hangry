@@ -6,7 +6,7 @@ describe Hangry do
     subject { Hangry.parse(File.read("spec/fixtures/allrecipes.html")) }
     
     its(:author) { should == "United Soybean Board" }
-    its(:cook_time) { should == "PT15M" }
+    its(:cook_time) { should == 15 }
     its(:description) { should == "\"This better-for-you main-dish salad is quick, colorful and full of satisfying texture. To explore a variety of grains, substitute 3 cups cooked regular couscous, brown rice or quinoa.\"" }
     its(:ingredients) {
       should == [
@@ -22,9 +22,9 @@ describe Hangry do
     }
     its(:name) { should == "Roasted Vegetable and Couscous Salad" }
     its(:instructions) { should == nil }
-    its(:prep_time) { should == "PT15M" }
+    its(:prep_time) { should == 15 }
     its(:published_date) { should == nil }
-    its(:total_time) { should == "PT30M" }
+    its(:total_time) { should == 30 }
     its(:yield) { should == "6 servings" }
 
   end

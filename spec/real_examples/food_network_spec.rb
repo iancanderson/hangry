@@ -5,7 +5,7 @@ describe Hangry do
   context "food network recipe" do
     subject { Hangry.parse(File.read("spec/fixtures/food_network_schema_org.html")) }
     
-    its(:cook_time) { should == "PT0H20M" }
+    its(:cook_time) { should == 20 }
     its(:description) { should == nil }
     its(:ingredients) do
       should == [
@@ -37,9 +37,9 @@ Place breasts in the center of a plastic food storage bag or 2 large sheets of w
     end
 
     its(:name) { should == "Spinach and Mushroom Stuffed Chicken Breasts" }
-    its(:prep_time) { should == "PT0H15M" }
+    its(:prep_time) { should == 15 }
     its(:published_date) { should == Date.parse("2013-02-06") }
-    its(:total_time) { should == "PT0H35M" }
+    its(:total_time) { should == 35 }
     its(:yield) { should == "4 servings" }
 
     it 'should parse the name of a schema.org Person when they are the author' do

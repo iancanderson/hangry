@@ -50,13 +50,13 @@ describe Hangry do
     subject { Hangry.parse(html) }
 
     its(:author) { should == "John Smith" }
-    its(:cook_time) { should == "PT1H" }
+    its(:cook_time) { should == 60 }
     its(:description) { should == 'This classic banana bread recipe comes from my mom -- the walnuts add a nice texture and flavor to the banana bread.' }
     its(:ingredients) { should == ["3 or 4 ripe bananas, smashed", "1 egg", "3/4 cup of sugar"] }
     its(:instructions) { should == "Preheat the oven to 350 degrees. Mix in the ingredients in a bowl. Add the flour last. Pour the mixture into a loaf pan and bake for one hour." }
         
     its(:name) { should == "Mom's World Famous Banana Bread" }
-    its(:prep_time) { should == "PT15M" }
+    its(:prep_time) { should == 15 }
     its(:published_date) { should == Date.parse("2009-05-08") }
     its(:yield) { should == '1 loaf' }
 
@@ -67,6 +67,29 @@ describe Hangry do
         Hangry::RECIPE_ATTRIBUTES.each do |attribute|
           subject.send(attribute).should be_nil
         end
+      end
+
+    end
+
+    context "time duration parsing" do
+
+      let(:html) do
+        <<-eos
+        <!DOCTYPE html>
+        <html>
+        <body>
+        <div itemscope itemtype="http://schema.org/Recipe">
+          Prep Time: <meta itemprop="prepTime" content="PT1H15M">1 hour, 15 minutes
+          Cook time: <meta itemprop="cookTime" content="PT1H">1 hour
+        </div>
+        </body>
+        </html>
+        eos
+      end
+
+      it "should convert times to total minutes" do
+        subject.prep_time.should == 75
+        subject.cook_time.should == 60
       end
 
     end

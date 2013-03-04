@@ -1,6 +1,7 @@
 require "hangry/version"
 require 'active_support/core_ext/object/blank'
 require 'date'
+require 'iso8601'
 require "nokogiri"
 
 module Hangry
@@ -57,6 +58,7 @@ module Hangry
       def to_a; []; end
       def to_ary; []; end
       def to_s; ""; end
+      def to_str; ""; end
       def to_f; 0.0; end
       def to_i; 0; end
     end
@@ -109,11 +111,15 @@ module Hangry
     end
     def parse_time(type)
       node = node_with_itemprop(type)
-      if node['content'].present?
+      iso8601_string = if node['content'].present?
         node['content']  # foodnetwork.com
       else
         node['datetime'] # allrecipes.com
       end
+      duration = ISO8601::Duration.new(iso8601_string)
+      duration.hours.to_i * 60 + duration.minutes.to_i
+    rescue ISO8601::Errors::UnknownPattern
+      nil
     end
     def parse_total_time
       parse_time(:totalTime)
