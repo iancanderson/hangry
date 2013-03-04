@@ -1,6 +1,12 @@
 # Hangry
 
-TODO: Write a gem description
+Parses microformatted recipe HTML into a plain-old-ruby Recipe object.
+
+Currently supported microformats:
+- http://schema.org/Recipe
+
+Microformats to support in future versions:
+- http://microformats.org/wiki/hrecipe
 
 ## Installation
 
@@ -18,7 +24,14 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'open-uri'
+recipe_html_string = open("http://www.foodnetwork.com/recipes/rachael-ray/spinach-and-mushroom-stuffed-chicken-breasts-recipe/index.html")
+recipe = Hangry.parse(recipe_html_string)
+recipe.name   # "Spinach and Mushroom Stuffed Chicken Breasts"
+recipe.yield  # "4 servings"
+# etc..
+```
 
 ## Contributing
 
