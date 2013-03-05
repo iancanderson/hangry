@@ -20,7 +20,7 @@ module Hangry
     end
 
     def parse_cook_time
-      #TODO
+      parse_duration node_with_class(:cookTime).css('.value-title').first['title']
     end
 
     def parse_description
@@ -40,7 +40,7 @@ module Hangry
     end
 
     def parse_prep_time
-      #TODO
+      parse_duration node_with_class(:prepTime).css('.value-title').first['title']
     end
 
     def parse_published_date
@@ -48,7 +48,8 @@ module Hangry
     end
 
     def parse_total_time
-      parse_duration node_with_class(:duration).css('.value-title').first['title']
+      node = value(node_with_class(:duration)) || value(node_with_class(:totalTime))
+      parse_duration node.css('.value-title').first['title']
     end
 
     def parse_yield

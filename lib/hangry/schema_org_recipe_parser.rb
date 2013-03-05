@@ -55,8 +55,6 @@ module Hangry
         node['datetime'] # allrecipes.com
       end
       parse_duration(iso8601_string)
-    rescue ISO8601::Errors::UnknownPattern
-      nil
     end
     def parse_total_time
       parse_time(:totalTime)
