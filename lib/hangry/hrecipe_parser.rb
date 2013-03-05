@@ -1,6 +1,10 @@
 module Hangry
   class HRecipeParser < RecipeParser
 
+    def self.nutrition_selector
+      '.nutrition'
+    end
+
     def self.root_selector
       '.hrecipe'
     end
@@ -37,6 +41,10 @@ module Hangry
 
     def parse_name
       clean_string node_with_class(:fn).content
+    end
+
+    def parse_nutrition
+      #TODO
     end
 
     def parse_prep_time

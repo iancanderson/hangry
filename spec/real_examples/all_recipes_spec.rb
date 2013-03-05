@@ -21,6 +21,21 @@ describe Hangry do
       ]
     }
     its(:name) { should == "Roasted Vegetable and Couscous Salad" }
+    its(:nutrition) do
+      should == {
+        calories: '305',
+        cholesterol: '0mg',
+        fiber: '4.3g',
+        protein: '6.8g',
+        saturated_fat: '2.2g',
+        sodium: '217mg',
+        sugar: '4.1g',
+        total_carbohydrates: '38.3g',
+        total_fat: '14.2g',
+        trans_fat: nil,
+        unsaturated_fat: nil
+      }
+    end
     its(:instructions) { should == nil }
     its(:prep_time) { should == 15 }
     its(:published_date) { should == nil }

@@ -15,10 +15,25 @@ module Hangry
     :ingredients,
     :instructions,
     :name,
+    :nutrition,
     :prep_time,
     :published_date,
     :total_time,
     :yield
+  ]
+
+  NUTRITION_ATTRIBUTES = [
+    :calories,
+    :cholesterol,
+    :fiber,
+    :protein,
+    :saturated_fat,
+    :sodium,
+    :sugar,
+    :total_carbohydrates,
+    :total_fat,
+    :trans_fat,
+    :unsaturated_fat
   ]
 
   Recipe = Struct.new(*RECIPE_ATTRIBUTES)

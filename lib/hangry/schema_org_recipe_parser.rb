@@ -5,6 +5,10 @@ module Hangry
       '[itemtype="http://schema.org/Recipe"]'
     end
 
+    def self.nutrition_selector
+      '[itemtype="http://schema.org/NutritionInformation"]'
+    end
+
     private
 
     def node_with_itemprop(itemprop)
@@ -12,6 +16,13 @@ module Hangry
     end
     def nodes_with_itemprop(itemprop)
       recipe_ast ? recipe_ast.css("[itemprop = \"#{itemprop}\"]") : NullObject.new
+    end
+    def nutrition_node_with_itemprop(itemprop)
+      return NullObject.new unless nutrition_ast
+      nutrition_ast.css("[itemprop = \"#{itemprop}\"]").first || NullObject.new
+    end
+    def nutrition_property_value(itemprop)
+      value(nutrition_node_with_itemprop(itemprop).content)
     end
     def parse_author
       author_node = node_with_itemprop(:author)
@@ -39,6 +50,21 @@ module Hangry
     end
     def parse_name
       clean_string node_with_itemprop(:name).content
+    end
+    def parse_nutrition
+      recipe.nutrition.tap do |nutrition|
+        nutrition[:calories] = nutrition_property_value(:calories)
+        nutrition[:cholesterol] = nutrition_property_value(:cholesterolContent)
+        nutrition[:fiber] = nutrition_property_value(:fiberContent)
+        nutrition[:protein] = nutrition_property_value(:proteinContent)
+        nutrition[:saturated_fat] = nutrition_property_value(:saturatedFatContent)
+        nutrition[:sodium] = nutrition_property_value(:sodiumContent)
+        nutrition[:sugar] = nutrition_property_value(:sugarContent)
+        nutrition[:total_carbohydrates] = nutrition_property_value(:carbohydrateContent)
+        nutrition[:total_fat] = nutrition_property_value(:fatContent)
+        nutrition[:trans_fat] = nutrition_property_value(:transFatContent)
+        nutrition[:unsaturated_fat] = nutrition_property_value(:unsaturatedFatContent)
+      end
     end
     def parse_prep_time
       parse_time(:prepTime)

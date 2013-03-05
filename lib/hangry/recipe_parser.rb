@@ -1,13 +1,15 @@
 module Hangry
   class RecipeParser
     attr_reader :recipe_html
-    attr_accessor :recipe_ast, :recipe
+    attr_accessor :nutrition_ast, :recipe_ast, :recipe
 
     def initialize(recipe_html)
       @recipe_html = recipe_html
       @recipe = Recipe.new
+      initialize_nutrition
       doc = Nokogiri::HTML(recipe_html)
       self.recipe_ast = doc.css(self.class.root_selector).first
+      self.nutrition_ast = recipe_ast && recipe_ast.css(self.class.nutrition_selector)
     end
 
     def parse
@@ -47,6 +49,13 @@ module Hangry
 
     def clean_string(string)
       string.strip.gsub(/\s+/, ' ')
+    end
+
+    def initialize_nutrition
+      recipe.nutrition = {}
+      NUTRITION_ATTRIBUTES.each do |attribute|
+        recipe.nutrition[attribute] = nil
+      end
     end
 
     def parse_duration(iso8601_string)
