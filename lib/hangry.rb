@@ -2,6 +2,7 @@ require "hangry/version"
 require 'hangry/recipe_parser'
 require 'hangry/hrecipe_parser'
 require 'hangry/schema_org_recipe_parser'
+require 'hangry/data_vocabulary_recipe_parser'
 require 'active_support/core_ext/object/blank'
 require 'date'
 require 'iso8601'
@@ -39,7 +40,7 @@ module Hangry
   Recipe = Struct.new(*RECIPE_ATTRIBUTES)
 
   def self.parse(html)
-    parser_classes = [SchemaOrgRecipeParser, HRecipeParser]
+    parser_classes = [SchemaOrgRecipeParser, HRecipeParser, DataVocabularyRecipeParser]
     parsers = parser_classes.map { |klass| klass.new(html) }
     parser = parsers.detect { |p| p.can_parse? }
 

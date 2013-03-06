@@ -9,6 +9,10 @@ module Hangry
       '[itemtype="http://schema.org/NutritionInformation"]'
     end
 
+    def self.ingredient_itemprop
+      :ingredients
+    end
+
     private
 
     def node_with_itemprop(itemprop)
@@ -40,7 +44,7 @@ module Hangry
       clean_string node_with_itemprop(:description).content
     end
     def parse_ingredients
-      nodes_with_itemprop(:ingredients).map(&:content).map do |ingredient|
+      nodes_with_itemprop(self.class.ingredient_itemprop).map(&:content).map do |ingredient|
         # remove newlines and excess whitespace from ingredients
         clean_string ingredient
       end
