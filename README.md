@@ -4,8 +4,7 @@ Parses microformatted recipe HTML into a plain-old-ruby Recipe object.
 
 Currently supported microformats:
 - http://schema.org/Recipe
-
-Microformats to support in future versions:
+- http://data-vocabulary.org/Recipe
 - http://microformats.org/wiki/hrecipe
 
 ## Build Status [![Build Status](https://travis-ci.org/iancanderson/hangry.png?branch=master)](http://travis-ci.org/iancanderson/hangry)
