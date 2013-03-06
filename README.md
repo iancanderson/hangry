@@ -8,7 +8,7 @@ Currently supported microformats:
 Microformats to support in future versions:
 - http://microformats.org/wiki/hrecipe
 
-## Build Status [![Build Status](https://secure.travis-ci.org/iancanderson/hangry.png?branch=master)](http://travis-ci.org/iancanderson/hangry)
+## Build Status [![Build Status](https://travis-ci.org/iancanderson/hangry.png?branch=master)](http://travis-ci.org/iancanderson/hangry)
 
 ## Installation
 
