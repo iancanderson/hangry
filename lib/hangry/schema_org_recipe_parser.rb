@@ -50,7 +50,7 @@ module Hangry
       end
     end
     def parse_instructions
-      clean_string node_with_itemprop(:recipeInstructions).content
+      clean_string node_with_itemprop(:recipeInstructions).content, preserve_newlines: true
     end
     def parse_name
       clean_string node_with_itemprop(:name).content

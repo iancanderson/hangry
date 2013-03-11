@@ -19,7 +19,10 @@ describe Hangry do
     }
     its(:instructions) do
       instructions = <<-eos
-      Line 3 (9-inch) round cakepans with wax paper; lightly grease and flour wax paper. Set pans aside. Stir together first 4 ingredients. Beat eggs and next 4 ingredients at medium speed with an electric mixer until smooth. Add flour mixture, beating at low speed until blended. Fold in carrot and next 3 ingredients. Pour batter into prepared cakepans. Bake at 350° for 25 to 30 minutes or until a wooden pick inserted in center comes out clean. Drizzle Buttermilk Glaze evenly over layers; cool in pans on wire racks 15 minutes. Remove from pans, and cool completely on wire racks. Spread Cream Cheese Frosting between layers and on top and sides of cake.
+      Line 3 (9-inch) round cakepans with wax paper; lightly grease and flour wax paper. Set pans aside.
+Stir together first 4 ingredients.
+Beat eggs and next 4 ingredients at medium speed with an electric mixer until smooth. Add flour mixture, beating at low speed until blended. Fold in carrot and next 3 ingredients. Pour batter into prepared cakepans.
+Bake at 350° for 25 to 30 minutes or until a wooden pick inserted in center comes out clean. Drizzle Buttermilk Glaze evenly over layers; cool in pans on wire racks 15 minutes. Remove from pans, and cool completely on wire racks. Spread Cream Cheese Frosting between layers and on top and sides of cake.
       eos
       should == instructions.strip
     end

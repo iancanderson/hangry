@@ -43,7 +43,7 @@ module Hangry
     end
 
     def parse_instructions
-      clean_string node_with_class(:instructions).content
+      clean_string node_with_class(:instructions).content, preserve_newlines: true
     end
 
     def parse_name

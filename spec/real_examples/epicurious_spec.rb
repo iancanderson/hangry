@@ -31,8 +31,17 @@ describe Hangry do
     }
 
     its(:instructions) do
+      # hmm... preserving newlines for Epicurious instructions gives us some crappy results...
       instructions = <<-eos
-Preparation Toast cumin seeds and coriander seeds in small skillet over medium-high heat until aromatic and slightly darker in color, shaking skillet often, about 1 1/2 minutes. Cool. Finely grind toasted seeds in spice grinder or in mortar with pestle. Whisk mayonnaise, 2 tablespoons extra-virgin olive oil, fresh lemon juice, smoked paprika, garlic, and ground spices in small bowl. Season aioli to taste with salt and pepper. DO AHEAD: Aioli can be made 1 day ahead. Cover and refrigerate. Place turkey in medium bowl. Add 2 tablespoons aioli; mix gently. Using damp hands, divide turkey mixture into 4 equal portions, then form each into scant 3/4-inch thick patty, about 3 1/2 inches in diameter. Using thumb, make small indentation in center of each burger. DO AHEAD: Can be made 4 hours ahead. Cover and chill. Prepare barbecue (medium-high heat). Sprinkle burgers with salt and pepper. Brush onion slices and bell pepper pieces with oil; sprinkle with salt and pepper. Grill onions and bell peppers until soft and charred, about 4 minutes per side. Grill turkey burgers 5 minutes. Turn over; grill until almost cooked through, about 4 minutes. Top each burger with 1 cheese slice and grill until meat is cooked through and cheese melts, about 1 minute longer. Place 1 turkey burger on each of 4 bun bottoms. Arrange grilled red pepper pieces, then grilled red onion slices over. Top each with dollop of aioli and some arugula. Cover burgers with bun tops and serve with pickle wedges and corn chips. add your own note
+Preparation
+Toast cumin seeds and coriander seeds in small skillet over medium-high heat
+until aromatic and slightly darker in color, shaking skillet often, about 1 1/2 minutes. Cool. Finely grind toasted seeds in spice grinder or in mortar with pestle. Whisk mayonnaise, 2 tablespoons extra-virgin olive oil, fresh lemon juice, smoked paprika, garlic, and ground spices in small bowl. Season aioli to taste with salt and pepper. DO AHEAD: Aioli can be made 1 day ahead. Cover and refrigerate.
+Place turkey in medium bowl. Add 2 tablespoons aioli; mix gently. Using damp
+hands, divide turkey mixture into 4 equal portions, then form each into scant 3/4-inch thick patty, about 3 1/2 inches in diameter. Using thumb, make small indentation in center of each burger. DO AHEAD: Can be made 4 hours ahead. Cover and chill.
+Prepare barbecue (medium-high heat). Sprinkle burgers with salt and pepper. Brush onion slices and bell pepper pieces with oil; sprinkle with salt and pepper. Grill onions and bell peppers until soft and charred, about 4 minutes per side.
+Grill turkey burgers 5 minutes. Turn over; grill until almost cooked through,
+about 4 minutes. Top each burger with 1 cheese slice and grill until meat is cooked through and cheese melts, about 1 minute longer. Place 1 turkey burger on each of 4 bun bottoms. Arrange grilled red pepper pieces, then grilled red onion slices over. Top each with dollop of aioli and some arugula. Cover burgers with bun tops and serve with pickle wedges and corn chips.
+add your own note
       eos
       should == instructions.strip
     end

@@ -20,7 +20,7 @@ module Hangry
     end
 
     def parse_instructions
-      clean_string node_with_itemprop(:instructions).content
+      clean_string node_with_itemprop(:instructions).content, preserve_newlines: true
     end
 
     def parse_published_date
