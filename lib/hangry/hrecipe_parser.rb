@@ -6,7 +6,7 @@ module Hangry
     end
 
     def self.root_selector
-      '.hrecipe'
+      '.hrecipe, .hRecipe'
     end
 
     private
@@ -32,7 +32,14 @@ module Hangry
     end
 
     def parse_ingredients
-      nodes_with_class(:ingredient).map(&:content).map { |ingredient| clean_string ingredient }
+      nodes_with_class(:ingredient).map { |ingredient_node|
+        # Instead of calling content on the node itself,
+        # join together the content of the nodes' children.
+        # This is to support BigOven's janky usage of spans with margin-lefts...
+        ingredient_node.children.map { |c| c.content }.join(' ')
+      }.map { |ingredient|
+        clean_string ingredient
+      }
     end
 
     def parse_instructions
