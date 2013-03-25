@@ -3,9 +3,15 @@ require 'hangry'
 describe Hangry do
 
   context "allrecipes.com recipe" do
-    subject { Hangry.parse(File.read("spec/fixtures/allrecipes.html")) }
+    let(:html) { File.read("spec/fixtures/allrecipes.html") }
+    subject { Hangry.parse(html) }
+
+    it "should use the correct parser" do
+      Hangry::ParserClassSelecter.new(html).parser_class.should == Hangry::Parsers::NonStandard::AllRecipesParser
+    end
     
     its(:author) { should == "United Soybean Board" }
+    its(:canonical_url) { should == "http://allrecipes.com/recipe/roasted-vegetable-and-couscous-salad/" }
     its(:cook_time) { should == 15 }
     its(:description) { should == "\"This better-for-you main-dish salad is quick, colorful and full of satisfying texture. To explore a variety of grains, substitute 3 cups cooked regular couscous, brown rice or quinoa.\"" }
     its(:ingredients) {
@@ -36,7 +42,17 @@ describe Hangry do
         unsaturated_fat: nil
       }
     end
-    its(:instructions) { should == nil }
+    its(:instructions) {
+      instructions = <<-EOS
+Preheat oven to 425 degrees F.
+Toss broccoli, peppers and onions with 2 tablespoons soybean oil and 1/4 teaspoon each salt and pepper. Place on foil-lined baking sheet.
+Bake for 15 minutes until vegetables are tender and lightly browned.
+Meanwhile, cook couscous according to package directions.
+Place cooked couscous and roasted vegetables in large bowl. Pour vinegar and remaining soybean oil over salad and sprinkle with remaining salt and pepper; toss lightly until combined.
+You may substitute 3 cups cooked regular couscous, brown rice or quinoa.
+      EOS
+      should == instructions.strip
+    }
     its(:prep_time) { should == 15 }
     its(:published_date) { should == nil }
     its(:total_time) { should == 30 }

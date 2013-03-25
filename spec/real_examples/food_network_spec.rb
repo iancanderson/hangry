@@ -5,6 +5,7 @@ describe Hangry do
   context "food network recipe" do
     subject { Hangry.parse(File.read("spec/fixtures/food_network_schema_org.html")) }
     
+    its(:canonical_url) { should == 'http://www.foodnetwork.com/recipes/rachael-ray/spinach-and-mushroom-stuffed-chicken-breasts-recipe/index.html' }
     its(:cook_time) { should == 20 }
     its(:description) { should == nil }
     its(:ingredients) do

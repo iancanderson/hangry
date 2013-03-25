@@ -1,8 +1,5 @@
 require "hangry/version"
-require 'hangry/recipe_parser'
-require 'hangry/hrecipe_parser'
-require 'hangry/schema_org_recipe_parser'
-require 'hangry/data_vocabulary_recipe_parser'
+require 'hangry/parser_class_selecter'
 require 'active_support/core_ext/object/blank'
 require 'date'
 require 'iso8601'
@@ -11,6 +8,7 @@ require "nokogiri"
 module Hangry
   RECIPE_ATTRIBUTES = [
     :author,
+    :canonical_url,
     :cook_time,
     :description,
     :ingredients,
@@ -40,11 +38,8 @@ module Hangry
   Recipe = Struct.new(*RECIPE_ATTRIBUTES)
 
   def self.parse(html)
-    parser_classes = [SchemaOrgRecipeParser, HRecipeParser, DataVocabularyRecipeParser]
-    parsers = parser_classes.map { |klass| klass.new(html) }
-    parser = parsers.detect { |p| p.can_parse? }
-
-    parser ? parser.parse : Recipe.new
+    parser_class = ParserClassSelecter.new(html).parser_class
+    parser_class.new(html).parse
   end
 
 end

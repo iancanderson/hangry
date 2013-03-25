@@ -7,6 +7,7 @@ describe Hangry do
     subject { Hangry.parse(File.read("spec/fixtures/myrecipes.com.html")) }
     
     its(:author) { should == "Southern Living" }
+    its(:canonical_url) { should == 'http://www.myrecipes.com/recipe/best-carrot-cake-10000000257583/' }
     its(:cook_time) { should == nil }
     its(:description) { should == "" } # not valid HTML to have a p inside of an h2...
     its(:ingredients) {

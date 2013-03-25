@@ -6,6 +6,7 @@ describe Hangry do
     subject { Hangry.parse(File.read("spec/fixtures/epicurious.html")) }
     
     its(:author) { should == "by Janet Taylor McCracken" }
+    its(:canonical_url) { should == "http://www.epicurious.com/articlesguides/bestof/toprecipes/bestburgerrecipes/recipes/food/views/Grilled-Turkey-Burgers-with-Cheddar-and-Smoky-Aioli-354289" }
     its(:cook_time) { should == nil }
     its(:description) { should == "A simple Moroccan-spiced aioli is mixed in with the ground turkey to keep the burgers moist and give them tons of flavor. Smoked paprika is available in the spice aisle of most supermarkets." }
     its(:prep_time) { should == 40 }

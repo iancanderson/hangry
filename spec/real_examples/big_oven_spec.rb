@@ -10,6 +10,7 @@ describe Hangry do
       # BigOven puts the author element outside of the hRecipe element...
       should == nil
     end
+    its(:canonical_url) { should == "http://www.bigoven.com/recipe/178920/steves-fish-tacos" }
     its(:cook_time) { should == nil }
     its(:description) { should == "I had never tried fish tacos until my son, fresh out of boot camp, asked me to make them. I found a basic recipe, then adapted it from there, and now it's one of my favorite things to eat!" }
     its(:ingredients) {
