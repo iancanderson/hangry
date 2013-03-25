@@ -7,7 +7,9 @@ Currently supported microformats:
 - http://data-vocabulary.org/Recipe
 - http://microformats.org/wiki/hrecipe
 
-## Build Status [![Build Status](https://travis-ci.org/iancanderson/hangry.png?branch=master)](http://travis-ci.org/iancanderson/hangry)
+## Pieces of Flair
+- [![Build Status](https://travis-ci.org/iancanderson/hangry.png?branch=master)](http://travis-ci.org/iancanderson/hangry)
+- [![Code Climate](https://codeclimate.com/github/iancanderson/hangry.png)](https://codeclimate.com/github/iancanderson/hangry)
 
 ## Installation
 
