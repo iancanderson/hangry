@@ -95,7 +95,8 @@ module Hangry
     def parse_yield
       clean_string(
         value(node_with_itemprop(:recipeYield)['content']) ||
-        value(node_with_itemprop(:recipeYield).content)
+        value(node_with_itemprop(:recipeYield).content) ||
+        NullObject.new
       )
     end
 
