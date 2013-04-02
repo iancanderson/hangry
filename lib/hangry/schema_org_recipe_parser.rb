@@ -26,7 +26,9 @@ module Hangry
       nutrition_ast.css("[itemprop = \"#{itemprop}\"]").first || NullObject.new
     end
     def nutrition_property_value(itemprop)
-      value(nutrition_node_with_itemprop(itemprop).content)
+      nutrition_node = nutrition_node_with_itemprop(itemprop)
+      value = value(nutrition_node['content']) || value(nutrition_node.content)
+      value ? value.strip : nil
     end
     def parse_author
       author_node = node_with_itemprop(:author)
@@ -50,7 +52,8 @@ module Hangry
       }.reject(&:blank?)
     end
     def parse_instructions
-      clean_string node_with_itemprop(:recipeInstructions).content, preserve_newlines: true
+      content = nodes_with_itemprop(:recipeInstructions).map(&:content).join("\n")
+      clean_string content, preserve_newlines: true
     end
     def parse_name
       clean_string node_with_itemprop(:name).content
@@ -90,7 +93,10 @@ module Hangry
       parse_time(:totalTime)
     end
     def parse_yield
-      clean_string node_with_itemprop(:recipeYield).content
+      clean_string(
+        value(node_with_itemprop(:recipeYield)['content']) ||
+        value(node_with_itemprop(:recipeYield).content)
+      )
     end
 
   end
