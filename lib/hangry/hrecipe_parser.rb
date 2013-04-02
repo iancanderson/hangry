@@ -39,7 +39,7 @@ module Hangry
         ingredient_node.children.map { |c| c.content }.join(' ')
       }.map { |ingredient|
         clean_string ingredient
-      }
+      }.reject(&:blank?)
     end
 
     def parse_instructions

@@ -44,10 +44,10 @@ module Hangry
       clean_string node_with_itemprop(:description).content
     end
     def parse_ingredients
-      nodes_with_itemprop(self.class.ingredient_itemprop).map(&:content).map do |ingredient|
+      nodes_with_itemprop(self.class.ingredient_itemprop).map(&:content).map { |ingredient|
         # remove newlines and excess whitespace from ingredients
         clean_string ingredient
-      end
+      }.reject(&:blank?)
     end
     def parse_instructions
       clean_string node_with_itemprop(:recipeInstructions).content, preserve_newlines: true
