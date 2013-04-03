@@ -18,6 +18,9 @@ module Hangry
       RECIPE_ATTRIBUTES.each do |attribute|
         attr_value = value(send("parse_#{attribute}"))
         recipe.public_send("#{attribute}=", attr_value)
+        next unless recipe.public_send(attribute).present?
+
+        send("clean_#{attribute}", recipe) if respond_to? "clean_#{attribute}"
       end
       recipe
     end
@@ -28,6 +31,13 @@ module Hangry
 
     def self.canonical_url_matches_domain?(html, domain)
       CanonicalUrlParser.new(html).canonical_domain == domain
+    end
+
+    def clean_nutrition(recipe)
+      recipe.nutrition.each do |key, value|
+        next unless value
+        recipe.nutrition[key] = clean_string value
+      end
     end
 
     private
