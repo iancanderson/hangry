@@ -43,7 +43,7 @@ module Hangry
     end
 
     def parse_instructions
-      node_with_class(:instructions).content
+      nodes_with_class(:instructions).map(&:content).join("\n")
     end
 
     def parse_name
@@ -52,6 +52,19 @@ module Hangry
 
     def parse_nutrition
       #TODO
+      {
+        calories: nil,
+        cholesterol: nil,
+        fiber: nil,
+        protein: nil,
+        saturated_fat: nil,
+        sodium: nil,
+        sugar: nil,
+        total_carbohydrates: nil,
+        total_fat: nil,
+        trans_fat: nil,
+        unsaturated_fat: nil
+      }
     end
 
     def parse_prep_time
@@ -63,7 +76,10 @@ module Hangry
     end
 
     def parse_total_time
-      node = value(node_with_class(:duration)) || value(node_with_class(:totalTime))
+      node = maybe(
+        value(node_with_class(:duration)) ||
+        value(node_with_class(:totalTime))
+      )
       parse_duration node.css('.value-title').first['title']
     end
 

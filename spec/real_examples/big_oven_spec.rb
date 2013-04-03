@@ -40,7 +40,21 @@ Fold over and dig in, with a nice IPA or crisp white wine!
       should == instructions.strip
     end
     its(:name) { should == "Steve's Fish Tacos" }
-    its(:nutrition) { should == nil }
+    its(:nutrition) {
+      should == {
+        calories: nil,
+        cholesterol: nil,
+        fiber: nil,
+        protein: nil,
+        saturated_fat: nil,
+        sodium: nil,
+        sugar: nil,
+        total_carbohydrates: nil,
+        total_fat: nil,
+        trans_fat: nil,
+        unsaturated_fat: nil
+      }
+    }
     its(:prep_time) { should == nil }
     its(:published_date) { should == nil }
     its(:total_time) { should == 45 }

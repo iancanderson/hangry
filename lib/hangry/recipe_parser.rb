@@ -56,6 +56,13 @@ module Hangry
       end
     end
 
+    def maybe(value)
+      case value
+      when nil then NullObject.new
+      else value
+      end
+    end
+
     def initialize_nutrition
       recipe.nutrition = {}
       NUTRITION_ATTRIBUTES.each do |attribute|
