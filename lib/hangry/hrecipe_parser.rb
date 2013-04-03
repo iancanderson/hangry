@@ -20,7 +20,7 @@ module Hangry
     end
 
     def parse_author
-      clean_string node_with_class(:author).content
+      node_with_class(:author).content
     end
 
     def parse_cook_time
@@ -28,7 +28,7 @@ module Hangry
     end
 
     def parse_description
-      clean_string node_with_class(:summary).content
+      node_with_class(:summary).content
     end
 
     def parse_ingredients
@@ -38,16 +38,16 @@ module Hangry
         # This is to support BigOven's janky usage of spans with margin-lefts...
         ingredient_node.children.map { |c| c.content }.join(' ')
       }.map { |ingredient|
-        clean_string ingredient
+        ingredient
       }.reject(&:blank?)
     end
 
     def parse_instructions
-      clean_string node_with_class(:instructions).content, preserve_newlines: true
+      node_with_class(:instructions).content
     end
 
     def parse_name
-      clean_string node_with_class(:fn).content
+      node_with_class(:fn).content
     end
 
     def parse_nutrition
@@ -68,7 +68,7 @@ module Hangry
     end
 
     def parse_yield
-      clean_string node_with_class(:yield).content
+      node_with_class(:yield).content
     end
 
   end

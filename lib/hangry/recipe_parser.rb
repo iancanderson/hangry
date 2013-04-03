@@ -33,13 +33,6 @@ module Hangry
       CanonicalUrlParser.new(html).canonical_domain == domain
     end
 
-    def clean_nutrition(recipe)
-      recipe.nutrition.each do |key, value|
-        next unless value
-        recipe.nutrition[key] = clean_string value
-      end
-    end
-
     private
 
     class NullObject
@@ -61,19 +54,6 @@ module Hangry
       when NullObject then nil
       else object
       end
-    end
-
-    def clean_string(string, options={})
-      preserve_newlines = options.fetch(:preserve_newlines, false)
-
-      string.strip!                     # remove leading and trailing spaces
-      if preserve_newlines
-        string.gsub!(/\s*\n\s*/, "\n")  # replace any whitespace group with a newline with a single newline
-        string.squeeze!(' ')            # consolidate duplicate spaces into a single space
-      else
-        string.gsub!(/\s+/, ' ')        # replace all consecutive whitespace with a single space
-      end
-      string
     end
 
     def initialize_nutrition

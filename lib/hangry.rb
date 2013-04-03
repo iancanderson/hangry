@@ -1,5 +1,6 @@
 require "hangry/version"
 require 'hangry/parser_class_selecter'
+require 'hangry/recipe_attribute_cleaner'
 require 'active_support/core_ext/object/blank'
 require 'date'
 require 'iso8601'
@@ -39,7 +40,8 @@ module Hangry
 
   def self.parse(html)
     parser_class = ParserClassSelecter.new(html).parser_class
-    parser_class.new(html).parse
+    recipe = parser_class.new(html).parse
+    RecipeAttributeCleaner.new(recipe).clean
   end
 
 end

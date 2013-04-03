@@ -8,8 +8,7 @@ module Hangry
         end
 
         def parse_instructions
-          content = recipe_ast.css('.directions ol').first.content
-          clean_string content, preserve_newlines: true
+          recipe_ast.css('.directions ol').first.content
         end
 
       end

@@ -16,11 +16,11 @@ module Hangry
     private
 
     def parse_description
-      clean_string node_with_itemprop(:summary).content
+      node_with_itemprop(:summary).content
     end
 
     def parse_instructions
-      clean_string node_with_itemprop(:instructions).content, preserve_newlines: true
+      node_with_itemprop(:instructions).content
     end
 
     def parse_published_date
@@ -29,7 +29,7 @@ module Hangry
     end
 
     def parse_yield
-      clean_string node_with_itemprop(:yield).content
+      node_with_itemprop(:yield).content
     end
 
   end

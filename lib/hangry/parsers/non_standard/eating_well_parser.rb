@@ -12,8 +12,7 @@ module Hangry
         end
 
         def parse_instructions
-          content = nodes_with_itemprop(:recipeinstructions).map(&:content).join("\n")
-          clean_string content, preserve_newlines: true
+          nodes_with_itemprop(:recipeinstructions).map(&:content).join("\n")
         end
 
         def parse_nutrition
@@ -33,10 +32,7 @@ module Hangry
         end
 
         def parse_yield
-          clean_string(
-            value(node_with_itemprop(:recipeyield).content) ||
-            NullObject.new
-          )
+          value(node_with_itemprop(:recipeyield).content) || NullObject.new
         end
 
       end

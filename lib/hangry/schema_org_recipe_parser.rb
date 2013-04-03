@@ -37,26 +37,25 @@ module Hangry
       else
         author_node.content
       end
-      clean_string author
+      author
     end
     def parse_cook_time
       parse_time(:cookTime)
     end
     def parse_description
-      clean_string node_with_itemprop(:description).content
+      node_with_itemprop(:description).content
     end
     def parse_ingredients
       nodes_with_itemprop(self.class.ingredient_itemprop).map(&:content).map { |ingredient|
         # remove newlines and excess whitespace from ingredients
-        clean_string ingredient
+        ingredient
       }.reject(&:blank?)
     end
     def parse_instructions
-      content = nodes_with_itemprop(:recipeInstructions).map(&:content).join("\n")
-      clean_string content, preserve_newlines: true
+      nodes_with_itemprop(:recipeInstructions).map(&:content).join("\n")
     end
     def parse_name
-      clean_string node_with_itemprop(:name).content
+      node_with_itemprop(:name).content
     end
     def parse_nutrition
       recipe.nutrition.tap do |nutrition|
@@ -93,11 +92,9 @@ module Hangry
       parse_time(:totalTime)
     end
     def parse_yield
-      clean_string(
-        value(node_with_itemprop(:recipeYield)['content']) ||
-        value(node_with_itemprop(:recipeYield).content) ||
-        NullObject.new
-      )
+      value(node_with_itemprop(:recipeYield)['content']) ||
+      value(node_with_itemprop(:recipeYield).content) ||
+      NullObject.new
     end
 
   end
