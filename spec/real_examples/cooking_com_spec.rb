@@ -47,7 +47,7 @@ In a saute pan over medium heat, warm the olive oil. Add the garlic and red pepp
       should == instructions.strip
     }
 
-    its(:prep_time) { should == nil }
+    its(:prep_time) { should == 10 }
     its(:published_date) { should == nil }
     its(:total_time) { should == 10 }
     its(:yield) { should == "Serves 4" }

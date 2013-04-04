@@ -75,10 +75,12 @@ module Hangry
     end
 
     def parse_duration(iso8601_string)
+      return nil unless iso8601_string.present?
       duration = ISO8601::Duration.new(iso8601_string)
       duration.hours.to_i * 60 + duration.minutes.to_i
     rescue ISO8601::Errors::UnknownPattern
-      nil
+      # Try to just convert to an integer.. Assuming minutes?
+      iso8601_string.to_i
     end
 
   end

@@ -24,7 +24,10 @@ module Hangry
     end
 
     def parse_cook_time
-      parse_duration node_with_class(:cookTime).css('.value-title').first['title']
+      parse_duration(
+        value(node_with_class(:cookTime).css('.value-title').first['title']) ||
+        value(node_with_class(:cooktime).css('.value-title').first['title'])
+      )
     end
 
     def parse_description
@@ -68,7 +71,10 @@ module Hangry
     end
 
     def parse_prep_time
-      parse_duration node_with_class(:prepTime).css('.value-title').first['title']
+      parse_duration(
+        value(node_with_class(:prepTime).css('.value-title').first['title']) ||
+        value(node_with_class(:preptime).css('.value-title').first['title'])
+      )
     end
 
     def parse_published_date

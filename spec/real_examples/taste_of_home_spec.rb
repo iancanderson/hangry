@@ -13,7 +13,7 @@ describe Hangry do
     
     its(:author) { should == nil }
     its(:canonical_url) { should == 'http://www.tasteofhome.com/Recipes/Rhubarb-Popover-Pie' }
-    its(:cook_time) { should == nil }
+    its(:cook_time) { should == 20 }
     its(:description) { should == nil }
     its(:ingredients) {
       should == [
@@ -58,7 +58,7 @@ Meanwhile, in a large skillet, saute rhubarb and pineapple in butter until rhuba
       should == instructions.strip
     }
 
-    its(:prep_time) { should == nil }
+    its(:prep_time) { should == 25 }
     its(:published_date) { should == nil }
     its(:total_time) { should == 45 }
     its(:yield) { should == "Yield: 6 Servings" }
