@@ -4,7 +4,7 @@ require 'hangry'
 describe Hangry do
 
   context "myrecipes.com recipe" do
-    subject { Hangry.parse(File.read("spec/fixtures/myrecipes.com.html")) }
+    subject { Hangry.parse(File.read("spec/fixtures/schema_org/data-vocabulary_org/myrecipes.com.html")) }
     
     its(:author) { should == "Southern Living" }
     its(:canonical_url) { should == 'http://www.myrecipes.com/recipe/best-carrot-cake-10000000257583/' }
