@@ -19,14 +19,19 @@ module Hangry
       recipe_ast.css(".#{klass}")
     end
 
+    def title_value_for_css_class(klass)
+      node = maybe(node_with_class(klass).css('.value-title').first)
+      node['title']
+    end
+
     def parse_author
       node_with_class(:author).content
     end
 
     def parse_cook_time
       parse_duration(
-        value(node_with_class(:cookTime).css('.value-title').first['title']) ||
-        value(node_with_class(:cooktime).css('.value-title').first['title'])
+        value(title_value_for_css_class(:cookTime)) ||
+        value(title_value_for_css_class(:cooktime))
       )
     end
 
@@ -72,8 +77,8 @@ module Hangry
 
     def parse_prep_time
       parse_duration(
-        value(node_with_class(:prepTime).css('.value-title').first['title']) ||
-        value(node_with_class(:preptime).css('.value-title').first['title'])
+        value(title_value_for_css_class(:prepTime)) ||
+        value(title_value_for_css_class(:preptime))
       )
     end
 
@@ -82,11 +87,10 @@ module Hangry
     end
 
     def parse_total_time
-      node = maybe(
-        value(node_with_class(:duration)) ||
-        value(node_with_class(:totalTime))
+      parse_duration(
+        value(title_value_for_css_class(:duration)) ||
+        value(title_value_for_css_class(:totalTime))
       )
-      parse_duration node.css('.value-title').first['title']
     end
 
     def parse_yield
