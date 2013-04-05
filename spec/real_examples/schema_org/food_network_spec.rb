@@ -3,7 +3,7 @@ require 'hangry'
 describe Hangry do
 
   context "standard food network recipe" do
-    subject { Hangry.parse(File.read("spec/fixtures/food_network_schema_org.html")) }
+    subject { Hangry.parse(File.read("spec/fixtures/schema_org/food_network_schema_org.html")) }
     
     its(:canonical_url) { should == 'http://www.foodnetwork.com/recipes/rachael-ray/spinach-and-mushroom-stuffed-chicken-breasts-recipe/index.html' }
     its(:cook_time) { should == 20 }
@@ -53,7 +53,7 @@ Place a mound of stuffing on each breast and wrap and roll breast over the stuff
   end
 
   context "food network recipe with some blank ingredients" do
-    subject { Hangry.parse(File.read("spec/fixtures/food_network_with_blank_ingredients.html")) }
+    subject { Hangry.parse(File.read("spec/fixtures/schema_org/food_network_with_blank_ingredients.html")) }
 
     its(:canonical_url) { should == 'http://www.foodnetwork.com/recipes/food-network-kitchens/easter-bunny-cake-recipe/index.html' }
     its(:cook_time) { should == nil }

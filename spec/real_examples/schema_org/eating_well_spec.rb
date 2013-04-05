@@ -3,8 +3,8 @@ require 'hangry'
 
 describe Hangry do
 
-  context "bettycrocker.com recipe" do
-    let(:html) { File.read("spec/fixtures/eatingwell.com.html") }
+  context "eatingwell.com recipe" do
+    let(:html) { File.read("spec/fixtures/schema_org/eatingwell.com.html") }
     subject { Hangry.parse(html) }
 
     it "should use the correct parser" do
