@@ -4,7 +4,7 @@ require 'hangry'
 describe Hangry do
 
   context "drinksmixer.com recipe" do
-    let(:html) { File.read("spec/fixtures/drinksmixer.com.html") }
+    let(:html) { File.read("spec/fixtures/hrecipe/drinksmixer.com.html") }
     subject { Hangry.parse(html) }
 
     its(:author) { should == nil }

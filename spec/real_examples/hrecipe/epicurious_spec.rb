@@ -3,7 +3,7 @@ require 'hangry'
 describe Hangry do
 
   context "epicurious.com recipe" do
-    subject { Hangry.parse(File.read("spec/fixtures/epicurious.html")) }
+    subject { Hangry.parse(File.read("spec/fixtures/hrecipe/epicurious.html")) }
     
     its(:author) { should == "by Janet Taylor McCracken" }
     its(:canonical_url) { should == "http://www.epicurious.com/articlesguides/bestof/toprecipes/bestburgerrecipes/recipes/food/views/Grilled-Turkey-Burgers-with-Cheddar-and-Smoky-Aioli-354289" }

@@ -4,7 +4,7 @@ require 'hangry'
 describe Hangry do
 
   context "bigoven.com recipe" do
-    subject { Hangry.parse(File.read("spec/fixtures/bigoven.html")) }
+    subject { Hangry.parse(File.read("spec/fixtures/hrecipe/bigoven.html")) }
     
     its(:author) do
       # BigOven puts the author element outside of the hRecipe element...
