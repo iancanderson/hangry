@@ -11,6 +11,7 @@ describe Hangry do
     its(:canonical_url) { should == "http://www.campbellskitchen.com/recipes/recipedetails?recipeid=60821" }
     its(:cook_time) { should == 10 }
     its(:description) { should == "The beans are white, the greens are spinach...and the dish is delicious (and ready in 30 minutes)!" }
+    its(:image_url) { should == 'http://www.cscassets.com/recipes/large_cknew/large_60821.jpg' }
     its(:ingredients) {
       should == [
         "1 tablespoon olive oil",

@@ -11,6 +11,7 @@ describe Hangry do
     its(:canonical_url) { should == "http://www.cooking.com/Recipes-And-More/recipes/garlic-shrimp-recipe-41.aspx" }
     its(:cook_time) { should == nil }
     its(:description) { should == "In Spanish tavernas, these shrimp; fragrant with garlic and olive oil; are brought to the table sizzling in a little metal pan. Have plenty of bread on hand to sop up the delicious pan juices. Serve with lemon wedges, if desired." }
+    its(:image_url) { should == nil }
     its(:ingredients) {
       should == [
         "1/4 cup olive oil",

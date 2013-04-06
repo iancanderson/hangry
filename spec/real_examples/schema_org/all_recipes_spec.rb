@@ -14,6 +14,7 @@ describe Hangry do
     its(:canonical_url) { should == "http://allrecipes.com/recipe/roasted-vegetable-and-couscous-salad/" }
     its(:cook_time) { should == 15 }
     its(:description) { should == "\"This better-for-you main-dish salad is quick, colorful and full of satisfying texture. To explore a variety of grains, substitute 3 cups cooked regular couscous, brown rice or quinoa.\"" }
+    its(:image_url) { should == "http://images.media-allrecipes.com/global/recipes/big/230347.jpg" }
     its(:ingredients) {
       should == [
         '3 cups broccoli florets, cut into 1/2-inch pieces',

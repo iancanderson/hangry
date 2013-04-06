@@ -11,6 +11,7 @@ describe Hangry do
     its(:canonical_url) { should == nil }
     its(:cook_time) { should == nil }
     its(:description) { should == "In this one-skillet supper, we toss dark leafy greens, diced tomatoes and white beans with gnocchi and top it all with gooey mozzarella. Serve with a mixed green salad with vinaigrette." }
+    its(:image_url) { should == nil }
     its(:ingredients) { should == [] }
     its(:name) { should == "Skillet Gnocchi with Chard & White Beans" }
     its(:nutrition) do

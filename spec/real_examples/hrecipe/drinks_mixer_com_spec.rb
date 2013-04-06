@@ -11,6 +11,7 @@ describe Hangry do
     its(:canonical_url) { should == nil }
     its(:cook_time) { should == nil }
     its(:description) { should == nil }
+    its(:image_url) { should == nil }
     its(:ingredients) {
       should == [
         "2 oz gin",

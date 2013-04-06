@@ -11,6 +11,7 @@ describe Hangry do
     its(:canonical_url) { should == nil }
     its(:cook_time) { should == 30 }
     its(:description) { should == "An authentic seafood and chicken paella that boasts some of Spain’s finest ingredients, from calasparra rice to chorizo." }
+    its(:image_url) { should == 'http://ichef.bbci.co.uk/food/ic/food_16x9_448/recipes/paella_7100_16x9.jpg' }
     its(:ingredients) {
       should == [
         "170g/6oz chorizo , cut into thin slices",

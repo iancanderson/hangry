@@ -37,6 +37,7 @@ recipe = Hangry.parse(recipe_html_string)
 recipe.author         # "Rachel Ray"
 recipe.cook_time      # 20
 recipe.description    # nil
+recipe.image_url      # "http://img.foodnetwork.com/FOOD/2008/08/13/av-rachael-ray.jpg"
 recipe.ingredients    # ["4 boneless, skinless chicken breasts, 6 ounces", "Large plastic food storage bags or waxed paper", "1 package, 10 ounces, frozen chopped spinach", "2 tablespoons butter", "12 small mushroom caps, crimini or button", "2 cloves garlic, cracked", "1 small shallot, quartered", "Salt and freshly ground black pepper", "1 cup part skim ricotta cheese", "1/2 cup grated Parmigiano or Romano, a couple of handfuls", "1/2 teaspoon fresh grated or ground nutmeg", "Toothpicks", "2 tablespoons extra-virgin olive oil", "2 tablespoons butter", "2 tablespoons flour", "1/2 cup white wine", "1 cup chicken broth"]
 recipe.instructions   # "Place breasts in the center of a plastic food storage..."
 recipe.name           # "Spinach and Mushroom Stuffed Chicken Breasts"

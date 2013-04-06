@@ -12,6 +12,7 @@ module Hangry
     :canonical_url,
     :cook_time,
     :description,
+    :image_url,
     :ingredients,
     :instructions,
     :name,

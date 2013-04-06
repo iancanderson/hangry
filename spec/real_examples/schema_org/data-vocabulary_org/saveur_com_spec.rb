@@ -11,6 +11,7 @@ describe Hangry do
     its(:canonical_url) { should == "http://www.saveur.com/article/Recipes/Smoked-Trout-Blinis-with-Creme-Fraiche-and-Dill" }
     its(:cook_time) { should == nil }
     its(:description) { should == "Sweet and supple miniature pancakes are topped with flakes of tender smoked trout and sprinkled with cayenne pepper for a touch of invigorating heat. A dollop of cr�me fra�che and a touch of anisey dill balance the fish's smoky intensity." }
+    its(:image_url) { should == "http://www2.worldpub.net/images/saveurmag/7-Gallery-One-Bite-Trout-Belinis-500x750.jpg" }
     its(:ingredients) { should == [] }
     its(:name) { should == "Smoked Trout Blinis with Crème Fraîche and Dill" }
     its(:nutrition) do

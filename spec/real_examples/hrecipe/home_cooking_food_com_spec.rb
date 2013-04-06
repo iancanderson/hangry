@@ -11,6 +11,7 @@ describe Hangry do
     its(:canonical_url) { should == "http://homecooking.about.com/od/muffinrecipes/r/blmuff23.htm" }
     its(:cook_time) { should == nil }
     its(:description) { should == "The combination of key limes and white chocolate is irresistable. Use this basic recipe for incredibly moist and delightfully tangy sweet muffins or cake." }
+    its(:image_url) { should == "http://0.tqn.com/d/homecooking/1/I/G/C/1/blmuff23.jpg" }
     its(:ingredients) {
       should == [
         "Cupcakes/Cake:",

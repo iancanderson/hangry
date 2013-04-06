@@ -11,6 +11,7 @@ describe Hangry do
     its(:canonical_url) { should == "http://www.chow.com/recipes/30700-strawberry-rhubarb-pie-with-sour-cream-crust" }
     its(:cook_time) { should == nil }
     its(:description) { should == "In this pie, sweet strawberries and tart rhubarb make a harmonious sweet-tart filling. The crust has a bit of richness from sour cream, and though rolling out pie dough can be a challenge, you can manhandle this dough a little without fear of toughening it up. Once the pie is finished baking, be sure to wait until it’s totally cooled to let the filling set, then enjoy with a scoop of ice cream. Special equipment: A 1-inch round cutter is needed to cut out the vents in the top crust of the pie. You’ll also need an instant-read thermometer and a pastry brush for this recipe." }
+    its(:image_url) { should == "http://search.chow.com/thumbnail/480/0/www.chow.com/assets/2013/03/30700_RecipeImage_620x413_strawberry_rhubarb_pie2.jpg" }
     its(:ingredients) {
       should == [
         "2 1/2 cups all-purpose flour",

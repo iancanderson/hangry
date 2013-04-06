@@ -52,6 +52,7 @@ describe Hangry do
     its(:author) { should == "John Smith" }
     its(:cook_time) { should == 60 }
     its(:description) { should == 'This classic banana bread recipe comes from my mom -- the walnuts add a nice texture and flavor to the banana bread.' }
+    its(:image_url) { should == "bananabread.jpg" }
     its(:ingredients) { should == ["3 or 4 ripe bananas, smashed", "1 egg", "3/4 cup of sugar"] }
     its(:instructions) { should == "Preheat the oven to 350 degrees. Mix in the ingredients in a bowl. Add the flour last. Pour the mixture into a loaf pan and bake for one hour." }
         

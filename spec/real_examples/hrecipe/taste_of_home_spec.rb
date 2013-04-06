@@ -15,6 +15,7 @@ describe Hangry do
     its(:canonical_url) { should == 'http://www.tasteofhome.com/Recipes/Rhubarb-Popover-Pie' }
     its(:cook_time) { should == 20 }
     its(:description) { should == nil }
+    its(:image_url) { should == "//hostedmedia.reimanpub.com/TOH/Images/Photos/37/exps49051_HCA1864839B02_17_3bC.jpg" }
     its(:ingredients) {
       should == [
         "1/2 cup all-purpose flour",

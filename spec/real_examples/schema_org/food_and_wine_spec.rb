@@ -11,6 +11,7 @@ describe Hangry do
     its(:canonical_url) { should == "http://www.foodandwine.com/recipes/honey-glazed-roasted-root-vegetables" }
     its(:cook_time) { should == 25 }
     its(:description) { should == "The secret to this sweet, slightly tangy dish: the touch of sherry vinegar in the glaze." }
+    its(:image_url) { should == "/images/sys/fw200711_r_gpbrocrootveg.jpg" }
     its(:ingredients) {
       should == [
         "1 1/4 pounds parsnips, peeled and sliced 1/2 inch thick",

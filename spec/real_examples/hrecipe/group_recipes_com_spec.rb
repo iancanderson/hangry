@@ -11,6 +11,7 @@ describe Hangry do
     its(:canonical_url) { should == nil }
     its(:cook_time) { should == nil }
     its(:description) { should == nil }
+    its(:image_url) { should == 'http://s1.grouprecipes.com/images/recipes/200/05383996f195c3c350a844fe062ef66a.jpg' }
     its(:ingredients) { should == [] }
     its(:name) { should == "Deep Dark Chocolate Cheesecake Recipe" }
     its(:nutrition) do

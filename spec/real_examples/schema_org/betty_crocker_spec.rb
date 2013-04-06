@@ -11,6 +11,7 @@ describe Hangry do
     its(:canonical_url) { should == "http://www.bettycrocker.com/recipes/skillet-chicken-nachos/9bf0c3be-09dd-4b1b-8cf4-a9cfa979b232" }
     its(:cook_time) { should == nil }
     its(:description) { should == "Dinner ready in 20 minutes! Enjoy these delicious nachos spooned with chicken mixture sprinkled with cheese and cilantro - perfect for Mexican cuisine." }
+    its(:image_url) { should == 'http://s3.amazonaws.com/gmi-digital-library/da3c4946-0ece-43ca-8c1a-ea95d922985e.jpg' }
     its(:ingredients) {
       should == [
         "1 tablespoon olive or vegetable oil",

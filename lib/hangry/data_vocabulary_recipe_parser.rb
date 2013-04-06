@@ -19,6 +19,10 @@ module Hangry
       node_with_itemprop(:summary).content
     end
 
+    def parse_image_url
+      node_with_itemprop(:photo)['src']
+    end
+
     def parse_instructions
       node_with_itemprop(:instructions).content
     end

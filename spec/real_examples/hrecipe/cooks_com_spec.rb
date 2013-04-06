@@ -11,6 +11,7 @@ describe Hangry do
     its(:canonical_url) { should == nil }
     its(:cook_time) { should == nil }
     its(:description) { should == nil }
+    its(:image_url) { should == 'http://img.cooks.com/i/rec/IMG_0814-200.jpg' }
     its(:ingredients) {
       should == [
         "2 c. flour",

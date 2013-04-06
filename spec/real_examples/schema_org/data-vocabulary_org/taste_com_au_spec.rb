@@ -11,6 +11,7 @@ describe Hangry do
     its(:canonical_url) { should == "/recipes/24586/lemon+melting+moments" }
     its(:cook_time) { should == 15 }
     its(:description) { should == "Take a trip down memory lane with these buttery biccies. They're great for teatime or with coffee for your next dinner party." }
+    its(:image_url) { should == "http://cdn.taste.com.au/images/recipes/mc/2010/07/24586_l.jpg" }
     its(:ingredients) { should == [] }
     its(:name) { should == "Lemon melting moments" }
     its(:nutrition) do

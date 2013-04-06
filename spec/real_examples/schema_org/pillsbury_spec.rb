@@ -11,6 +11,7 @@ describe Hangry do
     its(:canonical_url) { should == "http://www.pillsbury.com/recipes/big-cheesy-pepperoni-hand-pies/a17766e6-30ce-4a0c-af08-72533bb9b449" }
     its(:cook_time) { should == nil }
     its(:description) { should == "Enjoy these cheesy pepperoni hand pies made using Pillsbury® Big & Flaky dinner rolls – a delicious dinner that’s ready in 25 minutes." }
+    its(:image_url) { should == 'http://s3.amazonaws.com/gmi-digital-library/6e04c5d1-8b2c-41aa-83e3-7dac9cb3ca40.jpg' }
     its(:ingredients) {
       should == [
         "1 can (12 oz) Pillsbury® Grands ®! Big & Flaky crescent dinner rolls",

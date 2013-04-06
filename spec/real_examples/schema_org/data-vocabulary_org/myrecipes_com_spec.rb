@@ -10,6 +10,7 @@ describe Hangry do
     its(:canonical_url) { should == 'http://www.myrecipes.com/recipe/best-carrot-cake-10000000257583/' }
     its(:cook_time) { should == nil }
     its(:description) { should == "" } # not valid HTML to have a p inside of an h2...
+    its(:image_url) { should == "http://img4-2.myrecipes.timeinc.net/i/recipes/sl/03142008/carrot-cake-sl-257583-l.jpg" }
     its(:ingredients) {
       should == [
         "2 cups all-purpose flour", "2 teaspoons baking soda", "1/2 teaspoon salt", "2 teaspoons ground cinnamon",

@@ -15,6 +15,7 @@ describe Hangry do
     its(:canonical_url) { should == "http://www.eatingwell.com/recipes/sauteed_chicken_breasts_with_creamy_chive_sauce.html" }
     its(:cook_time) { should == nil }
     its(:description) { should == "Here's a sauce so delicious, it's missing only one thing: a little crunchy bread to dip in it. Make It a Meal: Serve with steamed asparagus or cauliflower, mashed potatoes or orzo pasta, and a glass of Vinho Verde." }
+    its(:image_url) { should == "http://assets.eatingwell.com/sites/default/files/imagecache/standard/recipes/MP4834.JPG" }
     its(:ingredients) {
       should == [
         "4 boneless, skinless chicken breasts, (about 1 pound), trimmed of fat",

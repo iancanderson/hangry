@@ -39,6 +39,10 @@ module Hangry
       node_with_class(:summary).content
     end
 
+    def parse_image_url
+      node_with_class(:photo)['src']
+    end
+
     def parse_ingredients
       nodes_with_class(:ingredient).map { |ingredient_node|
         # Instead of calling content on the node itself,

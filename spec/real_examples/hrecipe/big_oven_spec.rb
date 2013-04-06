@@ -13,6 +13,7 @@ describe Hangry do
     its(:canonical_url) { should == "http://www.bigoven.com/recipe/178920/steves-fish-tacos" }
     its(:cook_time) { should == nil }
     its(:description) { should == "I had never tried fish tacos until my son, fresh out of boot camp, asked me to make them. I found a basic recipe, then adapted it from there, and now it's one of my favorite things to eat!" }
+    its(:image_url) { should == 'http://mda.bigoven.com/pics/rs/256/steves-fish-tacos-2.jpg' }
     its(:ingredients) {
       should == [
         "1 package of tortillas ; small", "0.5 cup sour cream", "0.25 cup salsa ; favorite", "1 Salt", "1 Pepper",

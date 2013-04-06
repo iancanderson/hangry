@@ -11,6 +11,7 @@ describe Hangry do
     its(:canonical_url) { should == "http://www.copykat.com/2013/03/13/mcdonalds-shamrock-shake/" }
     its(:cook_time) { should == 10 }
     its(:description) { should == "Make this McDonald's menu item any time of year." }
+    its(:image_url) { should == "http://wm9zf27f67bdwwhm.zippykid.netdna-cdn.com/wp-content/uploads/2013/03/McDonalds-Shamrock-Shake-150x100.jpg" }
     its(:ingredients) {
       should == [
         "2 cups vanilla ice cream",

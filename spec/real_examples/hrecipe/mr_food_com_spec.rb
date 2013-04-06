@@ -11,6 +11,7 @@ describe Hangry do
     its(:canonical_url) { should == nil }
     its(:cook_time) { should == nil }
     its(:description) { should == nil }
+    its(:image_url) { should == "http://cf2.primecp.com/master_images/MrFood/Saucy-Italian-Pot-Roast-RE.jpg" }
     its(:ingredients) {
       should == [
         "1 (8-ounce) package sliced fresh baby Portobello mushrooms",

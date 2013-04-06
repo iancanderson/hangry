@@ -45,6 +45,10 @@ module Hangry
     def parse_description
       node_with_itemprop(:description).content
     end
+    def parse_image_url
+      node = node_with_itemprop(:image)
+      value(node['src']) || value(node['content'])
+    end
     def parse_ingredients
       nodes_with_itemprop(self.class.ingredient_itemprop).map(&:content).map { |ingredient|
         # remove newlines and excess whitespace from ingredients

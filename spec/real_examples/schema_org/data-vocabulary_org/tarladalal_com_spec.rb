@@ -11,6 +11,7 @@ describe Hangry do
     its(:canonical_url) { should == nil }
     its(:cook_time) { should == 15 }
     its(:description) { should == "A Jain version of the all-time favourite veggie fried rice!" }
+    its(:image_url) { should == "images/recipe/addnewphoto.jpg" }
     its(:ingredients) {
       should == [
         "4 cups 80 % cooked Rice",

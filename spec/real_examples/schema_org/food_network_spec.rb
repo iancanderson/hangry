@@ -8,6 +8,7 @@ describe Hangry do
     its(:canonical_url) { should == 'http://www.foodnetwork.com/recipes/rachael-ray/spinach-and-mushroom-stuffed-chicken-breasts-recipe/index.html' }
     its(:cook_time) { should == 20 }
     its(:description) { should == nil }
+    its(:image_url) { should == 'http://img.foodnetwork.com/FOOD/2008/08/13/av-rachael-ray.jpg' }
     its(:ingredients) do
       should == [
         "4 boneless, skinless chicken breasts, 6 ounces",
@@ -58,6 +59,7 @@ Place a mound of stuffing on each breast and wrap and roll breast over the stuff
     its(:canonical_url) { should == 'http://www.foodnetwork.com/recipes/food-network-kitchens/easter-bunny-cake-recipe/index.html' }
     its(:cook_time) { should == nil }
     its(:description) { should == nil }
+    its(:image_url) { should == "http://img.foodnetwork.com/FOOD/2013/03/06/FN_kitchens-logo-avatar_s48x48.jpg" }
     its(:ingredients) do
       should == [
         "3 sticks (12 ounces) unsalted butter, at room temperature",
