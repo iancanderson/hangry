@@ -48,6 +48,8 @@ recipe.yield          # "4 servings"
 # etc..
 ```
 
+[Live demo](http://hangryingreedytest.herokuapp.com/)
+
 ## Contributing
 
 1. Fork it
