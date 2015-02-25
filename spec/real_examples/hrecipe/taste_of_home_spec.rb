@@ -1,5 +1,6 @@
 # encoding: UTF-8
 require 'hangry'
+require 'rspec/its'
 
 describe Hangry do
 
@@ -8,14 +9,14 @@ describe Hangry do
     subject { Hangry.parse(html) }
 
     it "should use the correct parser" do
-      Hangry::ParserClassSelecter.new(html).parser_class.should == Hangry::Parsers::NonStandard::TasteOfHomeParser
+      expect(Hangry::ParserClassSelecter.new(html).parser_class).to eq(Hangry::Parsers::NonStandard::TasteOfHomeParser)
     end
     
-    its(:author) { should == nil }
-    its(:canonical_url) { should == 'http://www.tasteofhome.com/Recipes/Rhubarb-Popover-Pie' }
+    its(:author) { should == "" }
+    its(:canonical_url) { should == 'http://www.tasteofhome.com/recipes/rhubarb-popover-pie' }
     its(:cook_time) { should == 20 }
-    its(:description) { should == nil }
-    its(:image_url) { should == "//hostedmedia.reimanpub.com/TOH/Images/Photos/37/exps49051_HCA1864839B02_17_3bC.jpg" }
+    its(:description) { should == "This fabulous spring breakfast \"pie\" is also delicious when pineapple or even fresh strawberries are mixed in with the rhubarb filling. Yum!—Patricia Kile, Elizabethtown, Pennsylvania." }
+    its(:image_url) { should == "//hostedmedia.reimanpub.com/TOH/Images/Photos/37/300x300/exps49051_HCA1864839B02_17_3bC.jpg" }
     its(:ingredients) {
       should == [
         "1/2 cup all-purpose flour",
@@ -50,11 +51,11 @@ describe Hangry do
 
     its(:instructions) {
       instructions = <<-EOS
-Directions
 In a large bowl, combine flour and salt. In another bowl, whisk eggs and milk.
 Place butter in an 9-in. pie plate; heat in a 425° oven for 3-5 minutes or until butter is melted. Meanwhile, stir egg mixture into dry ingredients just until moistened.
 Carefully swirl the butter in the pan to coat the sides and bottom of pan; add batter. Bake at 425° for 16-20 minutes or until puffed and golden brown.
-Meanwhile, in a large skillet, saute rhubarb and pineapple in butter until rhubarb is tender. Stir in brown sugar; bring to a boil over medium heat, stirring constantly. Pour into the center of puffed pancake; cut into six wedges. Serve immediately with whipped cream if desired. Yield: 6 servings.
+Meanwhile, in a large skillet, saute rhubarb and pineapple in butter until rhubarb is tender. Stir in brown sugar; bring to a boil over medium heat, stirring constantly. Pour into the center of puffed pancake; cut into six wedges. Serve immediately with whipped cream if desired.
+Yield: 6 servings.      
       EOS
       should == instructions.strip
     }
@@ -62,7 +63,7 @@ Meanwhile, in a large skillet, saute rhubarb and pineapple in butter until rhuba
     its(:prep_time) { should == 25 }
     its(:published_date) { should == nil }
     its(:total_time) { should == 45 }
-    its(:yield) { should == "Yield: 6 Servings" }
+    its(:yield) { should == "6 servings" }
 
   end
 

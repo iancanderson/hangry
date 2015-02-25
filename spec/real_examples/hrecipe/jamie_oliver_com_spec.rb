@@ -1,5 +1,6 @@
 # encoding: UTF-8
 require 'hangry'
+require 'rspec/its'
 
 describe Hangry do
 
@@ -7,11 +8,15 @@ describe Hangry do
     let(:html) { File.read("spec/fixtures/hrecipe/jamieoliver.com.html") }
     subject { Hangry.parse(html) }
 
+    it "should use the correct parser" do
+      expect(Hangry::ParserClassSelecter.new(html).parser_class).to eq(Hangry::Parsers::NonStandard::JamieOliverParser)
+    end
+
     its(:author) { should == "Jamie Oliver" }
     its(:canonical_url) { should == nil }
     its(:cook_time) { should == nil }
     its(:description) { should == "This is a boneless steak cut from the top of the pork shoulder. It doesn't have a rim of fat round the edge, but what it does have is a beautiful marbling of fat through the meat. This keeps the meat deliciously moist while it cooks. The steaks are probably best cooked on a ridged griddle, but you can also pan-fry or roast them. The garlic, sage and lemon add extra flavour to the meat, but don't worry if you don't have them, the dish will work just as well without. Prep time: 10 minutes Cook time: 10 minutes" }
-    its(:image_url) { should == 'http://6f2e58107b6165c9c562-94f33990a658cbe0ad31be70884cbddb.r7.cf1.rackcdn.com/360_1_1349871789_lrg.jpg' }
+    its(:image_url) { should == 'http://s3-eu-west-1.amazonaws.com/jamieoliverprod/_int/rdb2/upload/360_1_1349871789_lrg.jpg' }
     its(:ingredients) {
       should == [
         "4 higher-welfare pork neck fillet steaks",

@@ -1,5 +1,6 @@
 # encoding: UTF-8
 require 'hangry'
+require 'rspec/its'
 
 describe Hangry do
 
@@ -7,21 +8,26 @@ describe Hangry do
     let(:html) { File.read("spec/fixtures/schema_org/copykat.com.html") }
     subject { Hangry.parse(html) }
 
+    it "should use the correct parser" do
+      expect(Hangry::ParserClassSelecter.new(html).parser_class).to eq(Hangry::Parsers::NonStandard::CopykatParser)
+    end
+
     its(:author) { should == "Stephanie Manley via CopyKat.com" }
-    its(:canonical_url) { should == "http://www.copykat.com/2013/03/13/mcdonalds-shamrock-shake/" }
-    its(:cook_time) { should == 10 }
-    its(:description) { should == "Make this McDonald's menu item any time of year." }
-    its(:image_url) { should == "http://wm9zf27f67bdwwhm.zippykid.netdna-cdn.com/wp-content/uploads/2013/03/McDonalds-Shamrock-Shake-150x100.jpg" }
+    its(:canonical_url) { should == "http://www.copykat.com/2014/12/03/low-fat-scalloped-potatoes/" }
+    its(:cook_time) { should == 40 }
+    its(:description) { should == "Enjoy these low fat scalloped potatoes. These are so tasty you won't even miss the butter and cream." }
+    its(:image_url) { should == "http://www.copykat.com/wp-content/uploads/2014/12/swansons-finished-low-fat-scalloped-potatoes-150x100.jpg" }
     its(:ingredients) {
       should == [
-        "2 cups vanilla ice cream",
-        "1/4 to 1/2 cup half and half",
-        "4 to 6 drops mint oil (mint flavored extract is ok)",
-        "2 to 3 drops green food coloring",
-        "Whipped Cream"
+        "1 pound Russet potatoes", 
+        "Non-stick spray", 
+        "1 teaspoon salt", 
+        "1/2 teaspoon freshly ground black pepper", 
+        "1 (26.1 ounces) box Low Fat Swanson's Cream Starter TM", 
+        "1 cup Cheddar cheese, optional"
       ]
     }
-    its(:name) { should == "McDonald's Shamrock Shake" }
+    its(:name) { should == "Low Fat Scalloped Potatoes" }
     its(:nutrition) do
       should == {
         calories: nil,
@@ -40,15 +46,14 @@ describe Hangry do
 
     its(:instructions) {
       instructions = <<-EOS
-Allow ice cream to soften for about 10 minutes so it will be easy to blend. Combine all ingredients in a blender and puree for about 30 seconds. Serve immediately. Top with whipped cream.
-Note: If you want to go dye free, omit the green food coloring, it tastes just the same without the food coloring.
+Preheat oven to 350 degrees. Wash potatoes, and if desired peel before slicing. Spray an 8 x 8 inch baking dish with non-stick spray. Layer potatoes into baking dish, overlapping each slice over the previous one. When the bottom of the pan is covered, lightly season with salt and pepper. Continue layers until all of the potatoes are in the pan. Pour Swanson's Low Fat Cream Starter over the potatoes. Bake potatoes for about 30 minutes. Sprinkle cheese on potatoes and bake until the cheese is melted. Enjoy!
       EOS
       should == instructions.strip
     }
-    its(:prep_time) { should == 10 }
+    its(:prep_time) { should == 15 }
     its(:published_date) { should == nil }
-    its(:total_time) { should == 20 }
-    its(:yield) { should == "1" }
+    its(:total_time) { should == 55 }
+    its(:yield) { should == "6" }
 
   end
 

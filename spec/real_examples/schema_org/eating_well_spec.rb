@@ -8,14 +8,14 @@ describe Hangry do
     subject { Hangry.parse(html) }
 
     it "should use the correct parser" do
-      Hangry::ParserClassSelecter.new(html).parser_class.should == Hangry::Parsers::NonStandard::EatingWellParser
+      expect(Hangry::ParserClassSelecter.new(html).parser_class).to eq(Hangry::Parsers::NonStandard::EatingWellParser)
     end
 
     its(:author) { should == "From EatingWell" }
     its(:canonical_url) { should == "http://www.eatingwell.com/recipes/sauteed_chicken_breasts_with_creamy_chive_sauce.html" }
     its(:cook_time) { should == nil }
     its(:description) { should == "Here's a sauce so delicious, it's missing only one thing: a little crunchy bread to dip in it. Make It a Meal: Serve with steamed asparagus or cauliflower, mashed potatoes or orzo pasta, and a glass of Vinho Verde." }
-    its(:image_url) { should == "http://assets.eatingwell.com/sites/default/files/imagecache/standard/recipes/MP4834.JPG" }
+    its(:image_url) { should == "http://bed56888308e93972c04-0dfc23b7b97881dee012a129d9518bae.r34.cf1.rackcdn.com/sites/default/files/imagecache/standard/recipes/MP4834.JPG" }
     its(:ingredients) {
       should == [
         "4 boneless, skinless chicken breasts, (about 1 pound), trimmed of fat",
@@ -34,7 +34,7 @@ describe Hangry do
     its(:nutrition) do
       should == {
         calories: '244',
-        cholesterol: '72 mg cholesterol; 1 g carbohydrates; 26 g protein; 0 g fiber; 679 mg sodium; 334 mg potassium.',
+        cholesterol: '72 mg',
         fiber: '0 g',
         protein: '26 g',
         saturated_fat: '3 g',

@@ -1,6 +1,6 @@
 language: ruby
 rvm:
+  - 2.2.0
+  - 2.1.2
   - 2.0.0
   - 1.9.3
-  #- jruby-19mode # JRuby in 1.9 mode - disabled for now due to differences in JRuby Nokogiri results...
-  - rbx-19mode
