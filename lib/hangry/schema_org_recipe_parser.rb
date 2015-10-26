@@ -32,12 +32,10 @@ module Hangry
     end
     def parse_author
       author_node = node_with_itemprop(:author)
-      author = if author_node['itemtype'] == "http://schema.org/Person"
-        author_node.css('[itemprop = "name"]').first['content']
-      else
-        author_node.content
+      if author_node['itemtype'] == 'http://schema.org/Person'
+        author = author_node.css('[itemprop=name]')
       end
-      author
+      author.present? ? author.first['content'] : author_node.content
     end
     def parse_cook_time
       parse_time(:cookTime)
