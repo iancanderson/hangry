@@ -11,18 +11,10 @@ describe Hangry do
     its(:canonical_url) { should == "http://www.foodandwine.com/recipes/honey-glazed-roasted-root-vegetables" }
     its(:cook_time) { should == 25 }
     its(:description) { should == "The secret to this sweet, slightly tangy dish: the touch of sherry vinegar in the glaze." }
-    its(:image_url) { should == "/images/sys/fw200711_r_gpbrocrootveg.jpg" }
+    its(:image_url) { should == "http://www.foodandwine.com/images/sys/fw200711_r_gpbrocrootveg.jpg" }
     its(:ingredients) {
       should == [
-        "1 1/4 pounds parsnips, peeled and sliced 1/2 inch thick",
-        "1 1/4 pounds carrots, peeled and sliced 1/2 inch thick",
-        "One 1 1/4 pound celery root\u0097peeled, quartered and sliced 1/2 inch thick",
-        "1 1/4 pounds golden beets, peeled and sliced 1/2 inch thick",
-        "1/2 cup extra-virgin olive oil",
-        "1/2 cup honey",
-        "6 thyme sprigs",
-        "Salt and freshly ground pepper",
-        "2 tablespoons sherry vinegar"
+        "1 1/4 pounds parsnips, peeled and sliced 1/2 inch thick", "1 1/4 pounds carrots, peeled and sliced 1/2 inch thick", "One 1 1/4 pound celery root—peeled, quartered and sliced 1/2 inch thick", "1 1/4 pounds golden beets, peeled and sliced 1/2 inch thick", "1/2 cup extra-virgin olive oil", "1/2 cup honey", "6 thyme sprigs", "Salt and freshly ground pepper", "2 tablespoons sherry vinegar"
       ]
     }
     its(:name) { should == "Honey-Glazed Roasted Root Vegetables" }

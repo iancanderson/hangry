@@ -1,4 +1,5 @@
 require 'hangry'
+require 'rspec/its'
 
 describe Hangry do
 
@@ -66,7 +67,7 @@ describe Hangry do
 
       it "should set all attributes to nil" do
         Hangry::RECIPE_ATTRIBUTES.each do |attribute|
-          subject.send(attribute).should be_nil
+          expect(subject.send(attribute)).to be_nil
         end
       end
 
@@ -89,8 +90,8 @@ describe Hangry do
       end
 
       it "should convert times to total minutes" do
-        subject.prep_time.should == 75
-        subject.cook_time.should == 60
+        expect(subject.prep_time).to eq(75)
+        expect(subject.cook_time).to eq(60)
       end
 
     end

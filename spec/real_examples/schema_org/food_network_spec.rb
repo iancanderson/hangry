@@ -1,14 +1,20 @@
 require 'hangry'
+require 'rspec/its'
 
 describe Hangry do
 
   context "standard food network recipe" do
-    subject { Hangry.parse(File.read("spec/fixtures/schema_org/food_network_schema_org.html")) }
+    let(:html) { File.read("spec/fixtures/schema_org/food_network_schema_org.html") }
+    subject { Hangry.parse(html) }
     
-    its(:canonical_url) { should == 'http://www.foodnetwork.com/recipes/rachael-ray/spinach-and-mushroom-stuffed-chicken-breasts-recipe/index.html' }
+    it "should use the correct parser" do
+      expect(Hangry::ParserClassSelecter.new(html).parser_class).to eq(Hangry::Parsers::NonStandard::FoodNetworkParser)
+    end
+
+    its(:canonical_url) { should == 'http://www.foodnetwork.com/recipes/rachael-ray/spinach-and-mushroom-stuffed-chicken-breasts-recipe.html' }
     its(:cook_time) { should == 20 }
     its(:description) { should == nil }
-    its(:image_url) { should == 'http://img.foodnetwork.com/FOOD/2008/08/13/av-rachael-ray.jpg' }
+    its(:image_url) { should == 'http://foodnetwork.sndimg.com/content/dam/images/food/unsized/Rachel_Ray.jpg.rend.sni2col.jpeg' }
     its(:ingredients) do
       should == [
         "4 boneless, skinless chicken breasts, 6 ounces",
@@ -37,18 +43,19 @@ Place breasts in the center of a plastic food storage bag or 2 large sheets of w
 Defrost spinach in the microwave. Transfer spinach to a kitchen towel. Twist towel around spinach and wring it out until very dry. Transfer to a medium-mixing bowl.
 Place a nonstick skillet over moderate heat. When skillet is hot, add butter, mushrooms, garlic and shallot. Season with salt and pepper and saute 5 minutes. Transfer mushrooms, garlic and shallot to the food processor. Pulse to grind the mushrooms and transfer to the mixing bowl, adding the processed mushrooms to the spinach. Add ricotta and grated cheese to the bowl and the nutmeg. Stir to combine the stuffing. Return your skillet to the stove over medium high heat.
 Place a mound of stuffing on each breast and wrap and roll breast over the stuffing. Secure breasts with toothpicks. Add 3 tablespoons oil to the pan, 3 turns of the pan. Add breasts to the pan and brown on all sides, cooking chicken 10 to 12 minutes. The meat will cook quickly because it is thin. Remove breasts; add butter to the pan and flour. Cook butter and flour for a minute, whisk in wine and reduce another minute. Whisk in broth and return breasts to the pan. Reduce heat and simmer until ready to serve. Remove toothpicks. Serve breasts whole or, remove from pan, slice on an angle and fan out on dinner plates. Top stuffed chicken breasts or sliced stuffed breasts with generous spoonfuls of the sauce.
+Recipe courtesy Rachael Ray
       instructions
       should == instructions.strip
     end
 
     its(:name) { should == "Spinach and Mushroom Stuffed Chicken Breasts" }
     its(:prep_time) { should == 15 }
-    its(:published_date) { should == Date.parse("2013-02-06") }
+    its(:published_date) { should == Date.parse("2014-12-16") }
     its(:total_time) { should == 35 }
     its(:yield) { should == "4 servings" }
 
     it 'should parse the name of a schema.org Person when they are the author' do
-      subject.author.should == 'Rachael Ray'
+      expect(subject.author).to eq('Rachael Ray')
     end
 
   end
@@ -56,10 +63,10 @@ Place a mound of stuffing on each breast and wrap and roll breast over the stuff
   context "food network recipe with some blank ingredients" do
     subject { Hangry.parse(File.read("spec/fixtures/schema_org/food_network_with_blank_ingredients.html")) }
 
-    its(:canonical_url) { should == 'http://www.foodnetwork.com/recipes/food-network-kitchens/easter-bunny-cake-recipe/index.html' }
+    its(:canonical_url) { should == 'http://www.foodnetwork.com/recipes/food-network-kitchens/easter-bunny-cake-recipe.html' }
     its(:cook_time) { should == nil }
     its(:description) { should == nil }
-    its(:image_url) { should == "http://img.foodnetwork.com/FOOD/2013/03/06/FN_kitchens-logo-avatar_s48x48.jpg" }
+    its(:image_url) { should == "http://foodnetwork.sndimg.com/content/dam/images/food/unsized/2013/11/25/0/FN-Avatar-FN-Logo-126x126.png.rend.sni2col.png" }
     its(:ingredients) do
       should == [
         "3 sticks (12 ounces) unsalted butter, at room temperature",
@@ -79,7 +86,7 @@ Place a mound of stuffing on each breast and wrap and roll breast over the stuff
       ]
     end
     it "should filter out blank ingredients" do
-      subject.ingredients.should_not include ""
+      expect(subject.ingredients).not_to include ""
     end
 
     its(:instructions) do
@@ -97,18 +104,19 @@ Cut the second marshmallow in half lengthwise. Make 3 slits in each half, going 
 Cook's Note:
 Take 2 1/2 sheets of parchment paper and cut in half. Line the edges of your cake board with these parchment rectangles so that they form a rectangle of open space in the middle. Build your cake on the edges of these pieces of parchment. When you are finished you can slide them away along with any excess icing and coconut.
 Make sure your cakes are completely cooled before you being to ice and cut them.
+Food Network Kitchens
       instructions
       should == instructions.strip
     end
 
     its(:name) { should == "Easter Bunny Cake" }
     its(:prep_time) { should == 60 }
-    its(:published_date) { should == Date.parse("2013-04-01") }
+    its(:published_date) { should == Date.parse("2014-12-17") }
     its(:total_time) { should == 60 }
     its(:yield) { should == "12 to 14 servings" }
 
     it 'should parse the name of a schema.org Person when they are the author' do
-      subject.author.should == 'Food Network Kitchens'
+      expect(subject.author).to eq('Food Network Kitchen')
     end
 
   end

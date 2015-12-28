@@ -5,7 +5,7 @@ describe Hangry do
 
   context "cooks.com recipe" do
     let(:html) { File.read("spec/fixtures/hrecipe/cooks.com.html") }
-    subject { Hangry.parse(html) }
+    subject { Hangry.parse(html.encode!("UTF-8", 'binary', :invalid => :replace, :undef => :replace, :replace => '')) }
 
     its(:author) { should == "CM" }
     its(:canonical_url) { should == nil }
@@ -46,11 +46,7 @@ describe Hangry do
 
     its(:instructions) {
       instructions = <<-EOS
-Mix first 3 ingredients using half of the True Lemon packet (optional). Using a pastry blender or two knives, cut in butter as you would when making pie crust until it resembles coarse crumbs.
-Press crumb mixture into a 9 x 13 inch pan. Bake in a preheated 350?F oven for 15-20 minutes.
-Combine the remaining ingredients (and the other half of the True Lemon packet) to make the lemon filling.
-Pour over crust and bake for 25 minutes at 350?F or until lightly golden on top. Sprinkle with powdered sugar when cool.
-Cut into bars.
+Mix first 3 ingredients using half of the True Lemon packet (optional). Using a pastry blender or two knives, cut in butter as you would when making pie crust until it resembles coarse crumbs.Press crumb mixture into a 9 x 13 inch pan. Bake in a preheated 350F oven for 15-20 minutes.Combine the remaining ingredients (and the other half of the True Lemon packet) to make the lemon filling.Pour over crust and bake for 25 minutes at 350F or until lightly golden on top. Sprinkle with powdered sugar when cool.Cut into bars.
       EOS
       should == instructions.strip
     }

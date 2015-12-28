@@ -12,7 +12,7 @@ describe Hangry do
     its(:cook_time) { should == nil }
     its(:description) { should == nil }
     its(:image_url) { should == 'http://s1.grouprecipes.com/images/recipes/200/05383996f195c3c350a844fe062ef66a.jpg' }
-    its(:ingredients) { should == [] }
+    its(:ingredients) { should == ["chocolate wafer cookie", "orange juice", "butter", "bittersweet chocolate", "cream cheese", "mascarpone cheese", "sour cream", "brown sugar", "unsweetened cocoa powder", "cornstarch", "salt", "eggs"] }
     its(:name) { should == "Deep Dark Chocolate Cheesecake Recipe" }
     its(:nutrition) do
       should == {
