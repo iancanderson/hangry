@@ -24,7 +24,6 @@ module Hangry
     def parser_class
       # Prefer the more specific parsers
       parser_classes = [
-        Parsers::NonStandard::AllRecipesParser,
         Parsers::NonStandard::BigOvenParser,
         Parsers::NonStandard::CopykatParser,
         Parsers::NonStandard::EatingWellParser,
@@ -39,6 +38,6 @@ module Hangry
       parser_classes << DefaultRecipeParser
       parser_classes.detect { |p| p.can_parse?(@html) }
     end
-    
+
   end
 end
