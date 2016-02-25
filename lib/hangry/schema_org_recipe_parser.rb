@@ -51,9 +51,8 @@ module Hangry
       value(node['src']) || value(node['content'])
     end
     def parse_ingredients
-      nodes_with_itemprop(self.class.ingredient_itemprop).map(&:content).map { |ingredient|
-        # remove newlines and excess whitespace from ingredients
-        ingredient
+      nodes_with_itemprop(self.class.ingredient_itemprop).map { |node|
+        node.content.strip
       }.reject(&:blank?)
     end
     def parse_instructions
