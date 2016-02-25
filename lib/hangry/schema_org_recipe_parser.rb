@@ -57,13 +57,13 @@ module Hangry
       }.reject(&:blank?)
     end
     def parse_instructions
-      # => NOT THIS:
-      #nodes_with_itemprop(:recipeInstructions).map(&:content).join("\n")
-      inst = ""
+      # Some sites like may have their recipe instructions doubled if they
+      # support different ways of presentation.
+      # E.g. http://www.pillsbury.com/recipes/big-cheesy-pepperoni-pockets/a17766e6-30ce-4a0c-af08-72533bb9b449
+      # has its steps doubled ("step by step" and "list" modes).
       nodes_with_itemprop(:recipeInstructions).map { |i|
-        inst += i.content.strip + "\n" unless inst.include?(i.content.strip)
-      }
-      inst 
+        i.content.strip
+      }.uniq.join("\n")
     end
     def parse_name
       node_with_itemprop(:name).content
